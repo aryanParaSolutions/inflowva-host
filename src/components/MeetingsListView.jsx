@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ThreeDotsLogo from "../ui/ThreeDotsLogo";
 
 export default function MeetingListView() {
   return (
@@ -9,8 +10,8 @@ export default function MeetingListView() {
 
       {/* List of Meetings goes here... */}
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[6px] p-3">
-        <ul className="flex justify-around items-center gap-6 w-full mx-4">
+      <div className="bg-white border border-[#E5E7EB] rounded-[6px] p-3 w-full">
+        <ul className="flex justify-between items-center gap-6 mx-4">
           <li className="flex justify-center items-center gap-2">
             <div className="contain w-[30px] h-[30px]">
               <img
@@ -22,7 +23,7 @@ export default function MeetingListView() {
             <ul className="flex flex-col items-start gap-1">
               <li className="text-[14px]">Weekly Report Marketing + Sales</li>
               <li className="text-[10px] text-[#ACACAC]">
-                May 20th, 2025 | 11:00 AM{' '}
+                May 20th, 2025 | 11:00 AM{" "}
               </li>
             </ul>
           </li>
@@ -70,37 +71,62 @@ export default function MeetingListView() {
           </li>
 
           <li>
-            <ul className="flex flex-row w-[5vw] bg-gray-800">
-              <li className="w-[30px] h-[30px] z-0">
+            <ul className="flex flex-row w-[6vw]">
+              <li className="relative w-7 h-7 rounded-full overflow-hidden z-0">
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
                   alt="Profile Photo"
+                  className="w-full h-full object-cover"
                 />
               </li>
-              <li className="w-[30px] h-[30px] z-10">
+              <li className="relative w-7 h-7 rounded-full overflow-hidden z-10">
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
-                  alt="Profile Photo"
+                  alt=""
+                  className="w-full h-full object-cover"
                 />
               </li>
-              <li className="w-[30px] h-[30px] z-20">
+              <li className="relative w-7 h-7 rounded-full overflow-hidden z-20">
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
                   alt="Profile Photo"
+                  className="w-full h-full object-cover"
                 />
               </li>
-              <li className="w-[30px] h-[30px] z-30">
+              <li className="relative w-7 h-7 rounded-full overflow-hidden z-30">
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
                   alt="Profile Photo"
+                  className="w-full h-full object-cover"
                 />
               </li>
             </ul>
           </li>
 
-          <li>list</li>
+          <li>
+            <div className="w-[31px] h-[30px] bg-[#D1D1D1] rounded-full flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19"
+                height="19"
+                viewBox="0 0 19 19"
+                fill="none"
+              >
+                <path
+                  d="M6.13232 4.78467L13.6323 9.28467L6.13232 13.7847V4.78467Z"
+                  fill="black"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </li>
 
-          <li>list</li>
+          <li>
+            <ThreeDotsLogo />
+          </li>
         </ul>
       </div>
     </div>
