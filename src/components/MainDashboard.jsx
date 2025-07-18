@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import Card from './Card.jsx';
 import Filters from './Filters.jsx';

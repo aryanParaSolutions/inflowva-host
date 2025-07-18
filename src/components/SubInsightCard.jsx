@@ -4,7 +4,7 @@ export default function SubInsightCard({ name, bgColor, cardInfo, svg }) {
 
 
   return (
-    <div className="flex flex-col gap-2 bg-white p-3 rounded-[4.8px] h-[15vh]">
+    <div className="flex flex-col gap-2 bg-white p-3 rounded-[4.8px] h-[13vh]">
       <div className="flex justify-between items-center">
         {/* the potential risks, suggestion, opportunities and patterns insights goes here... */}
         <ul className="flex justify-start items-center gap-3">

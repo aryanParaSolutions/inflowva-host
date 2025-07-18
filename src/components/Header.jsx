@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 export default function Header() {
@@ -28,8 +27,6 @@ export default function Header() {
   ];
 
   // const [isOpen, setIsOpen] = useState()
-
-  const [isActive, setIsActive] = useState(false);
 
   return (
     <motion.div
@@ -120,7 +117,7 @@ export default function Header() {
             <li>
               <button className="flex flex-col justify-center items-center w-[2rem] h-[2rem] m-2 p-[0.3rem] border border-[#26262680]  border-[0.5px] rounded-[0.375rem]">
                 <img
-                  src="./public/images/profile.webp"
+                  src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
                   alt="profile"
                   className="h-5 object-cover"
                 />

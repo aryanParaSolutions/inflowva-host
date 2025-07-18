@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { NavLink, Link } from 'react-router-dom';
 
 export default function Filters({
@@ -9,7 +9,6 @@ export default function Filters({
   onListToggle,
   showList,
 }) {
-  const filterDropdowns = filters;
 
   return (
     <div className="flex flex-wrap justify-between items-center mx-8 mt-12">
@@ -44,7 +43,7 @@ export default function Filters({
           </div>
         </li>
 
-        {filterDropdowns.map((dropdown) => (
+        {filters.map((dropdown) => (
           <li
             key={dropdown.id}
             className="text-[13px] border border-[#E5E7EB] rounded-[8px] pr-2 m-2 hover:bg-gray-100"

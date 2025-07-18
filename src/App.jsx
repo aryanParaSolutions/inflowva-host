@@ -20,7 +20,7 @@ function App() {
             <Route path="/meetings" element={<Meetings />}></Route>
             <Route path="/report" element={<TeamReport />}></Route>
             <Route path="/memo" element={<VoiceMemo />}></Route>
-            <Route path="//calendar" element={<CalendarView />}></Route>
+            <Route path="/calendar" element={<CalendarView />}></Route>
           </Routes>
         </div>
       </Router>

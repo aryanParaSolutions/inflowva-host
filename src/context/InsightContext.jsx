@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
+// tooltip, popup menu, dropdown
+
 const InsightContext = createContext();
 
 export const useInsight = () => {
