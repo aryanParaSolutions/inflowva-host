@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import Card from './Card.jsx';
-import Filters from './Filters.jsx';
-import SummaryCard from './SummaryCard.jsx';
-import ListView from './ListView.jsx';
-import CalendarView from './CalendarView.jsx';
+import Card from '../components/Card.jsx';
+import Filters from '../components/Filters.jsx';
+import SummaryCard from '../components/SummaryCard.jsx';
+import ListView from '../components/ListView.jsx';
+import CalendarView from '../components/CalendarView.jsx';
 import { useInsight } from '../context/InsightContext.jsx';
+import AddMeetingButton from '../ui/AddMeetingButton.jsx';
 
-export default function MainDashboard() {
+export default function MyFeed() {
   const {
     showCalendar,
     setShowCalendar,
@@ -96,6 +97,9 @@ export default function MainDashboard() {
           <ListView />
         </div>
       )}
+
+      {/* Add Meeting Button */}
+      <AddMeetingButton />
     </motion.div>
   );
 }

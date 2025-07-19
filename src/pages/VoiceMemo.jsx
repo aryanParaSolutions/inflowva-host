@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import Filters from './Filters.jsx';
+import Filters from '../components/Filters.jsx';
+import AddMeetingButton from '../ui/AddMeetingButton.jsx';
 
-export default function TeamReport() {
-  const teamReportDropdown = [
+export default function VoiceMemo() {
+  const voiceMemoDropdown = [
     {
       id: 'content',
       name: 'Content Type',
@@ -57,7 +58,10 @@ export default function TeamReport() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1.3 }}
     >
-      <Filters filterName="Team Report" filters={teamReportDropdown} />
+      <Filters filterName="Voice Memo" filters={voiceMemoDropdown} />
+
+      {/* Add Meeting Button */}
+      <AddMeetingButton />
     </motion.div>
   );
 }

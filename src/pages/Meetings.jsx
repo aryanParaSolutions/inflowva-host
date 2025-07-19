@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import Filters from './Filters.jsx';
-import MeetingListView from './MeetingsListView.jsx';
+import Filters from '../components/Filters.jsx';
+import MeetingListView from '../components/MeetingsListView.jsx';
+import AddMeetingButton from '../ui/AddMeetingButton.jsx';
 
 export default function Meetings() {
   const meetingsDropdown = [
@@ -61,6 +62,9 @@ export default function Meetings() {
       <Filters filterName="Meetings" filters={meetingsDropdown} />
 
       <MeetingListView />
+
+      {/* Add Meeting Button */}
+      <AddMeetingButton />
     </motion.div>
   );
 }
