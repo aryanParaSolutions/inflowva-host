@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import Filters from "../components/Filters.jsx";
-import AddMeetingButton from "../ui/AddMeetingButton.jsx";
+import AddButton from "../ui/AddButton.jsx";
+import MRVListView from "../components/MRVListView.jsx";
 
 export default function TeamReport() {
   const teamReportDropdown = [
@@ -60,8 +61,11 @@ export default function TeamReport() {
     >
       <Filters filterName="Team Report" filters={teamReportDropdown} />
 
+      {/* Report List View  */}
+      <MRVListView firstTitle="Recent Reports" secondTitle="All Reports"/>
+
       {/* Add Meeting Button */}
-      <AddMeetingButton />
+      <AddButton />
     </motion.div>
   );
 }

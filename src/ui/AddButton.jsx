@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddCard from "../components/AddCard";
 import Tooltip from "./Tooltip";
 
 function PlusToXIcon({ isAddButtonOpen }) {
@@ -126,7 +127,7 @@ const actions = [
       </svg>
     ),
     label: "Live Meeting",
-    onClick: () => alert("Live Meeting"),
+    onClick: () => (<AddCard />),
   },
   {
     icon: (
@@ -144,7 +145,7 @@ const actions = [
       </svg>
     ),
     label: "Team Report",
-    onClick: () => alert("Team Report"),
+    onClick: () => (<AddCard />),
   },
   {
     icon: (
@@ -162,11 +163,11 @@ const actions = [
       </svg>
     ),
     label: "Voice Memo",
-    onClick: () => alert("Voice Memo"),
+    onClick: () => (<AddCard />),
   },
 ];
 
-export default function AddMeetingButton() {
+export default function AddButton() {
   const [isAddButtonOpen, setIsAddButtonOpen] = useState(false);
 
   return (

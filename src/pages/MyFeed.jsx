@@ -6,7 +6,7 @@ import SummaryCard from '../components/SummaryCard.jsx';
 import ListView from '../components/ListView.jsx';
 import CalendarView from '../components/CalendarView.jsx';
 import { useInsight } from '../context/InsightContext.jsx';
-import AddMeetingButton from '../ui/AddMeetingButton.jsx';
+import AddButton from '../ui/AddButton.jsx';
 
 export default function MyFeed() {
   const {
@@ -99,7 +99,7 @@ export default function MyFeed() {
       )}
 
       {/* Add Meeting Button */}
-      <AddMeetingButton />
+      <AddButton />
     </motion.div>
   );
 }

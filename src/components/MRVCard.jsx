@@ -1,7 +1,7 @@
 import React from "react";
 import ThreeDotsLogo from "../ui/ThreeDotsLogo.jsx";
 
-export default function MeetingCard() {
+export default function MRVCard() {
   return (
     // Meeting information goes here...
     <div className="bg-white border border-[#E5E7EB] rounded-[6px] p-3 w-full">
