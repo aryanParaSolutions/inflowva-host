@@ -1,57 +1,20 @@
-import React from "react";
+import React, { use } from "react";
 import { motion } from "motion/react";
 import Filters from "../components/Filters.jsx";
 import MRVListView from "../components/MRVListView.jsx";
+import CalendarView from "../components/CalendarView.jsx";
 import AddButton from "../ui/AddButton.jsx";
-import AddCard from "../components/AddCard.jsx";
+import { useInsight } from "../context/InsightContext.jsx";
+import SyncCard from "../components/SyncCard.jsx";
 
 export default function Meetings() {
-  const meetingsDropdown = [
-    {
-      id: "content",
-      name: "Content Type",
-      options: [
-        { value: "Content Type", label: "Content Type" },
-        { value: "all", label: "All" },
-        { value: "meeting", label: "Meeting" },
-        { value: "report", label: "Team Report" },
-        { value: "memo", label: "Voice Memo" },
-      ],
-    },
-    {
-      id: "department",
-      name: "Department",
-      options: [
-        { value: "Department", label: "Department" },
-        { value: "all", label: "All" },
-        { value: "tech", label: "Tech" },
-        { value: "design", label: "Design" },
-        { value: "marketing", label: "Marketing" },
-      ],
-    },
-    {
-      id: "insight",
-      name: "Insight Type",
-      options: [
-        { value: "Insight Type", label: "Insight Type" },
-        { value: "risk", label: "Risk" },
-        { value: "patterns", label: "Patterns" },
-        { value: "opportunity", label: "Opportunity" },
-        { value: "suggestions", label: "Suggestions" },
-      ],
-    },
-    {
-      id: "view-range",
-      name: "View Range",
-      options: [
-        { value: "View Range", label: "View Range" },
-        { value: "today", label: "Today" },
-        { value: "week", label: "This Week" },
-        { value: "month", label: "This Month" },
-        { value: "custom", label: "Custom Range" },
-      ],
-    },
-  ];
+  const {
+    showCalendar,
+    setShowCalendar,
+    showList,
+    setShowList,
+    meetingsDropdown,
+  } = useInsight();
 
   return (
     <motion.div
@@ -60,12 +23,40 @@ export default function Meetings() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1.3 }}
     >
-      <Filters filterName="Meetings" filters={meetingsDropdown} />
-
-      <AddCard />
+      <Filters
+        filterName="Meetings"
+        filters={meetingsDropdown}
+        onCalendarToggle={() => {
+          if (!showCalendar) setShowCalendar(!showCalendar);
+          setShowList(false);
+        }}
+        showCalendar={showCalendar}
+        onListToggle={() => {
+          if (!showList) setShowList(!showList);
+          setShowCalendar(false);
+        }}
+        showList={showList}
+      />
 
       {/* Meeting List View  */}
-      <MRVListView firstTitle="Upcoming Meetings" secondTitle="Past Meetings"/>
+      {showList && (
+        <div className="mt-6">
+          <MRVListView
+            firstTitle="Upcoming Meetings"
+            secondTitle="Past Meetings"
+          />
+        </div>
+      )}
+
+      {/* Calendar View */}
+      {showCalendar && (
+        <>
+          <div className="mt-6">
+            <SyncCard />
+            <CalendarView />
+          </div>
+        </>
+      )}
 
       {/* Add Meeting Button */}
       <AddButton />

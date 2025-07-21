@@ -18,10 +18,10 @@ export default function SubInsightCard({ name, bgColor, cardInfo, svg }) {
             {/* The name of the insight generated. for e.g. (Risk, Suggestion, Opportunities, Patterns) */}
             {name}
           </li>
-          <li className="w-[20px] h-[20px]">
+          <li className="w-[15px] h-[15px]">
             <img
               
-              src="https://png.pngtree.com/png-clipart/20210606/original/pngtree-red-push-pin-isolated-realistic-thumbtack-board-tack-png-image_6398035.jpg"
+              src="/images/boardpin.png"
               
               alt="Board Pin"
             />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddCard from "../components/AddCard";
 import Tooltip from "./Tooltip";
+import { div } from "motion/react-client";
 
 function PlusToXIcon({ isAddButtonOpen }) {
   return (
@@ -126,8 +127,10 @@ const actions = [
         />
       </svg>
     ),
-    label: "Live Meeting",
-    onClick: () => (<AddCard />),
+    label: "Add Live Meeting",
+    cardSubTitle: "Add a live meeting and enable AI assistance",
+    inputTitle: "Meeting Title (Optional)",
+    inputLink: "Meeting Link (Capture meetings from GMeet, Zoom and more.)",
   },
   {
     icon: (
@@ -144,8 +147,10 @@ const actions = [
         />
       </svg>
     ),
-    label: "Team Report",
-    onClick: () => (<AddCard />),
+    label: "Add Team Report",
+    cardSubTitle: "Add a team report and enable AI assistance",
+    inputTitle: "Report Title (Optional)",
+    inputLink: "Report Link / Upload (Add a link (Google Docs, Notion, etc.))",
   },
   {
     icon: (
@@ -162,50 +167,79 @@ const actions = [
         />
       </svg>
     ),
-    label: "Voice Memo",
-    onClick: () => (<AddCard />),
+    label: "Add Voice Memo",
+    cardSubTitle: "Add a voice memo and enable AI assistance",
+    inputTitle: "Voice Memo Title (Optional)",
+    inputLink: "Upload Audio File (.mp3, .m4a, .wav, etc.)",
   },
 ];
 
 export default function AddButton() {
   const [isAddButtonOpen, setIsAddButtonOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedActionIdx, setSelectedActionIdx] = useState(null);
 
   return (
-    <div className="fixed right-2 bottom-8 flex flex-col items-center z-50">
-      {/* Action Buttons */}
-      <div
-        className={`flex flex-col items-center gap-4 mb-2 transition-all duration-300 ${
-          isAddButtonOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 pointer-events-none translate-y-4"
-        }`}
-      >
-        {actions.map((action, idx) => (
-          <div key={action.label} className="relative group flex items-center">
+    <>
+      {isModalOpen && selectedActionIdx !== null && (
+        <div className="fixed inset-0 z-[100] flex justify-center items-center bg-black/50">
+          <div className="relative bg-white border border-[#E5E7EB] rounded-[7.5px] shadow-2xl">
             <button
-              onClick={action.onClick}
-              className="w-[48px] h-[48px] rounded-full shadow-lg bg-[#666666] flex items-center justify-center text-white text-2xl hover:bg-[#0075FF] transition"
-              style={{ transitionDelay: `${isAddButtonOpen ? idx * 60 : 0}ms` }}
-              aria-label={action.label}
+              className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 rounded-full p-2"
+              onClick={() => { setIsModalOpen(false); setSelectedActionIdx(null); }}
+              aria-label="Close"
             >
-              {action.icon}
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <line x1="6" y1="6" x2="18" y2="18" stroke="#333" strokeWidth="2" />
+                <line x1="18" y1="6" x2="6" y2="18" stroke="#333" strokeWidth="2" />
+              </svg>
             </button>
-            {/* Tooltip to the left */}
-            <div className="absolute right-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-              <Tooltip content={action.label} />
-            </div>
+            <AddCard
+              cardTitle={actions[selectedActionIdx].label}
+              cardSubTitle={actions[selectedActionIdx].cardSubTitle}
+              inputTitle={actions[selectedActionIdx].inputTitle}
+              inputLink={actions[selectedActionIdx].inputLink}
+            />
           </div>
-        ))}
+        </div>
+      )}
+
+      <div className="fixed right-2 bottom-8 flex flex-col items-center z-50">
+        {/* Action Buttons */}
+        <div
+          className={`flex flex-col items-center gap-4 mb-2 transition-all duration-300 ${
+            isAddButtonOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 pointer-events-none translate-y-4"
+          }`}
+        >
+          {actions.map((action, idx) => (
+            <div key={action.label} className="relative group flex items-center">
+              <button
+                onClick={() => { setIsModalOpen(true); setSelectedActionIdx(idx); }}
+                className="w-[48px] h-[48px] rounded-full shadow-lg bg-[#666666] flex items-center justify-center text-white text-2xl hover:bg-[#0075FF] transition"
+                style={{ transitionDelay: `${isAddButtonOpen ? idx * 60 : 0}ms` }}
+                aria-label={action.label}
+              >
+                {action.icon}
+              </button>
+              {/* Tooltip to the left */}
+              <div className="absolute right-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                <Tooltip content={action.label} />
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Main FAB */}
+        <button
+          className="rounded-full flex items-center justify-center transition-all duration-300 group"
+          onClick={() => setIsAddButtonOpen((v) => !v)}
+          aria-label={isAddButtonOpen ? "Close" : "Add"}
+          style={{ padding: 0, border: "none" }}
+        >
+          <PlusToXIcon isAddButtonOpen={isAddButtonOpen} />
+        </button>
       </div>
-      {/* Main FAB */}
-      <button
-        className="rounded-full flex items-center justify-center transition-all duration-300 group"
-        onClick={() => setIsAddButtonOpen((v) => !v)}
-        aria-label={isAddButtonOpen ? "Close" : "Add"}
-        style={{ padding: 0, border: "none" }}
-      >
-        <PlusToXIcon isAddButtonOpen={isAddButtonOpen} />
-      </button>
-    </div>
+    </>
   );
 }

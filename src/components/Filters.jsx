@@ -75,7 +75,7 @@ export default function Filters({
           {/* list view button */}
           <button
             onClick={onListToggle}
-            className={`border border-[#E5E7EB] rounded-l-sm p-2 ${
+            className={`border border-[#E5E7EB] border-r-0 rounded-l-sm p-2 ${
               showList
                 ? 'bg-[#2196F3]'
                 : 'hover:bg-[#F0F0F0]'
@@ -99,7 +99,7 @@ export default function Filters({
           {/* Calendar toggle button */}
           <button
             onClick={onCalendarToggle}
-            className={`border border-[#E5E7EB] rounded-r-sm p-2 ${
+            className={`border border-[#E5E7EB] border-l-0 rounded-r-sm p-2 ${
               showCalendar
                 ? 'bg-[#2196F3]'
                 : 'hover:bg-[#F0F0F0]'

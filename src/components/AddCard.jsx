@@ -1,40 +1,43 @@
 import { useState } from "react";
 import React from "react";
 
-export default function AddCard() {
+export default function AddCard( { cardTitle, cardSubTitle, inputTitle, inputTitleValue, inputLink, inputLinkValue } ) {
   const [enabled, setEnabled] = useState(false);
 
   return (
-    <ul className="flex flex-col gap-5 items-start p-5 border border-[#E5E7EB] rounded-[7.5px] h-[88vh] w-[728px]">
+    <ul className="flex flex-col gap-5 items-start p-5 rounded-[7.5px] h-[88vh] w-[728px]">
       <li className="flex flex-col items-start gap-2 w-full">
-        <p className="text-[24px]">Add Live Meeting</p>
+        <p className="text-[24px]">{cardTitle}</p>
         <p className="text-[12px] text-[#525252]">
-          Add a live meeting and enable AI assistance
+          {cardSubTitle}
         </p>
         <hr className="border-t w-full border-[#E5E7EB] my-4" />
       </li>
 
       <li className=" text-[14px] flex flex-col gap-2">
-        Meeting Title (Optional)
+        {inputTitle}
         <input
           className="p-2 border border-[#E5E7EB] rounded-[7.5px]"
           type="text"
-          value=""
+          // value of the input title goes here...
+          value={inputTitleValue || ""}
           placeholder="Enter Meeting Title"
         />
       </li>
 
       <li className=" text-[14px] flex flex-col gap-2">
-        Meeting Link (Capture meetings from GMeet, Zoom and more.)
+        {inputLink}
         <input
           className="p-2 border border-[#E5E7EB] rounded-[7.5px]"
           type="text"
-          value=""
+          // value of the input link goes here...
+          value={inputLinkValue || ""}
           placeholder="Paste Meeting Link"
         />
       </li>
 
       <li className=" text-[14px] flex flex-col gap-2">
+        {/* Invites goes here... if any? */}
         Invitees (Optional)
         <input
           className="p-2 border border-[#E5E7EB] rounded-[7.5px]"
@@ -51,6 +54,7 @@ export default function AddCard() {
             {/* Hidden checkbox */}
             <input
               type="checkbox"
+              // This checkbox controls the AI bot toggle
               checked={enabled}
               onChange={() => setEnabled(!enabled)}
               className="sr-only peer"
